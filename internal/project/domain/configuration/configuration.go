@@ -44,4 +44,11 @@ const (
 	// DatabaseLayer Раздел настроек базы данных
 	DatabaseLayer = `database`
 	DatabaseConn  = DatabaseLayer + LayerSeparator + `connection`
+
+	// OpenWeatherLayer Раздел настроек API для сервиса OpenWeather
+	OpenWeatherLayer      = `weather`
+	OpenWeatherKey        = OpenWeatherLayer + LayerSeparator + `key`
+	DefaultOpenWeatherKey = `981429fbfadfb6694e1ce1de10f128e7`
+	OpenWeatherUrl        = OpenWeatherLayer + LayerSeparator + `url`
+	DefaultOpenWeatherUrl = `http://api.openweathermap.org/`
 )

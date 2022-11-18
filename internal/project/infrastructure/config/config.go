@@ -25,6 +25,8 @@ func SetDefaults(cfg *viper.Viper) error {
 	cfg.SetDefault(configuration.LogMaxBackups, configuration.DefaultLogMaxBackups)
 	cfg.SetDefault(configuration.DevelopmentMode, configuration.DefaultDevelopmentMode)
 	cfg.SetDefault(configuration.DatabaseConn, configuration.DefaultDatabaseConn)
+	cfg.SetDefault(configuration.OpenWeatherKey, configuration.DefaultOpenWeatherKey)
+	cfg.SetDefault(configuration.OpenWeatherUrl, configuration.DefaultOpenWeatherUrl)
 
 	dir, err := determineBaseDir()
 

@@ -13,6 +13,7 @@ import (
 	"projectname/internal/project/infrastructure/data"
 	"projectname/internal/project/infrastructure/database/driver/pgx"
 	"projectname/internal/project/infrastructure/logger"
+	openWeather "projectname/internal/project/infrastructure/open_weather"
 	"projectname/internal/project/interfaces/web/echo/server"
 )
 
@@ -129,6 +130,18 @@ func initDependencies(app project.Project) []di.Def {
 				logServiceClosing(app, background.ServiceName)
 				obj.(*scheduler.Scheduler).Stop()
 				return
+			},
+		},
+		{
+			Name: openWeather.ServiceName,
+			Build: func(ctn di.Container) (interface{}, error) {
+				var cfg *viper.Viper
+
+				if err := ctn.Fill(config.ServiceName, &cfg); err != nil {
+					return nil, err
+				}
+
+				return openWeather.New(cfg), nil
 			},
 		},
 	}
