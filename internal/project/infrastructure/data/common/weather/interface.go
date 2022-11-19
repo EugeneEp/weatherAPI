@@ -10,4 +10,6 @@ type Interface interface {
 	Delete(rq weather.Request) error
 	Write(rq weather.Temperature) error
 	Get() (*weather.Get, error)
+	GetAvgTemp(req weather.AvgTemp) (*float64, error)
+	WriteAvg(rq weather.AvgTemp) error
 }

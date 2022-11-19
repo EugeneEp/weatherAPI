@@ -9,4 +9,5 @@ func Bind(g *echo.Group) {
 	route.GET("/city", Get)
 	route.GET("/city/:name", Create)
 	route.GET("/city/delete/:name", Delete)
+	route.GET("/city/avg/:name", GetAvgTemp)
 }

@@ -46,7 +46,7 @@ const (
 	DatabaseConn  = DatabaseLayer + LayerSeparator + `connection`
 
 	// OpenWeatherLayer Раздел настроек API для сервиса OpenWeather
-	OpenWeatherLayer      = `weather`
+	OpenWeatherLayer      = `open_weather`
 	OpenWeatherKey        = OpenWeatherLayer + LayerSeparator + `key`
 	DefaultOpenWeatherKey = `981429fbfadfb6694e1ce1de10f128e7`
 	OpenWeatherUrl        = OpenWeatherLayer + LayerSeparator + `url`
@@ -56,4 +56,11 @@ const (
 	SyncLayer                 = `sync`
 	SyncGetCityWeatherTime    = SyncLayer + LayerSeparator + `getCityWeatherTime`
 	DefaultGetCityWeatherTime = 1
+	SyncСntDayArchiveTime     = SyncLayer + LayerSeparator + `cntDayArchiveTime`
+	DefaultСntDayArchiveTime  = 1
+
+	// WeatherLayer Раздел настроек для работы с данными по погоде
+	WeatherLayer         = ``
+	СntDayArchive        = `cntDayArchive`
+	DefaultCntDayArchive = 1
 )

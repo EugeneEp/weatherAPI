@@ -28,6 +28,8 @@ func SetDefaults(cfg *viper.Viper) error {
 	cfg.SetDefault(configuration.OpenWeatherKey, configuration.DefaultOpenWeatherKey)
 	cfg.SetDefault(configuration.OpenWeatherUrl, configuration.DefaultOpenWeatherUrl)
 	cfg.SetDefault(configuration.SyncGetCityWeatherTime, configuration.DefaultGetCityWeatherTime)
+	cfg.SetDefault(configuration.SyncСntDayArchiveTime, configuration.DefaultСntDayArchiveTime)
+	cfg.SetDefault(configuration.СntDayArchive, configuration.DefaultCntDayArchive)
 
 	dir, err := determineBaseDir()
 
