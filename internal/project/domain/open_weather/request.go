@@ -7,7 +7,7 @@ type City struct {
 }
 
 type Weather struct {
-	Current struct {
+	Main struct {
 		Temp float64 `json:"temp"`
-	} `json:"current"`
+	} `json:"main"`
 }

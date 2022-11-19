@@ -51,4 +51,9 @@ const (
 	DefaultOpenWeatherKey = `981429fbfadfb6694e1ce1de10f128e7`
 	OpenWeatherUrl        = OpenWeatherLayer + LayerSeparator + `url`
 	DefaultOpenWeatherUrl = `http://api.openweathermap.org/`
+
+	// SyncLayer Раздел настроек синхронизации
+	SyncLayer                 = `sync`
+	SyncGetCityWeatherTime    = SyncLayer + LayerSeparator + `getCityWeatherTime`
+	DefaultGetCityWeatherTime = 1
 )
