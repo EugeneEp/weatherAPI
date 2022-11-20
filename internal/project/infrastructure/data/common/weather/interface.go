@@ -3,6 +3,7 @@ package weather
 import (
 	"projectname/internal/project/domain/open_weather"
 	"projectname/internal/project/domain/weather"
+	"projectname/internal/project/infrastructure/database/driver"
 )
 
 type Interface interface {
@@ -12,4 +13,5 @@ type Interface interface {
 	Get() (*weather.Get, error)
 	GetAvgTemp(req weather.AvgTemp) (*float64, error)
 	WriteAvg(rq weather.AvgTemp) error
+	SetDriver(d driver.Driver)
 }

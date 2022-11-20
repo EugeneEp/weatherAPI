@@ -37,3 +37,7 @@ func Context(ctn di.Container) (weather.Interface, error) {
 		driver: d,
 	}, nil
 }
+
+func (c *context) SetDriver(d driver.Driver) {
+	c.driver = d
+}
