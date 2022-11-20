@@ -5,7 +5,9 @@ import (
 	framework "github.com/labstack/echo/v4"
 	echoMiddleware "github.com/labstack/echo/v4/middleware"
 	"github.com/sarulabs/di/v2"
+	"github.com/swaggo/echo-swagger"
 	"go.uber.org/zap"
+	_ "projectname/docs"
 	"projectname/internal/project/interfaces/web/echo"
 	"projectname/internal/project/interfaces/web/echo/middleware"
 	"projectname/internal/project/interfaces/web/echo/middleware/transport"
@@ -30,6 +32,7 @@ func New(ctn di.Container, log *zap.Logger) (*framework.Echo, error) {
 	route := web.Group("")
 
 	echo.Bind(route)
+	web.GET("/docs/*", echoSwagger.WrapHandler)
 
 	return web, nil
 }

@@ -7,7 +7,7 @@ import (
 func Bind(g *echo.Group) {
 	route := g.Group("/weather")
 	route.GET("/city", Get)
-	route.GET("/city/:name", Create)
-	route.GET("/city/delete/:name", Delete)
-	route.GET("/city/avg/:name", GetAvgTemp)
+	route.POST("/city/:name", Create)
+	route.DELETE("/city/:name", Delete)
+	route.GET("/city/:name", GetAvgTemp)
 }
