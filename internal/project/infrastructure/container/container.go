@@ -8,6 +8,7 @@ import (
 	"github.com/zhashkevych/scheduler"
 	"go.uber.org/zap"
 	"projectname/internal/project"
+	"projectname/internal/project/infrastructure/alerts"
 	"projectname/internal/project/infrastructure/background"
 	"projectname/internal/project/infrastructure/config"
 	"projectname/internal/project/infrastructure/data"
@@ -142,6 +143,17 @@ func initDependencies(app project.Project) []di.Def {
 				}
 
 				return openWeather.New(cfg), nil
+			},
+		},
+		{
+			Name: alerts.ServiceName,
+			Build: func(ctn di.Container) (interface{}, error) {
+				return alerts.New(), nil
+			},
+			Close: func(obj interface{}) error {
+				logServiceClosing(app, alerts.ServiceName)
+				obj.(*alerts.Alerts).Close()
+				return nil
 			},
 		},
 	}

@@ -1,12 +1,14 @@
 package weather
 
 import (
+	"fmt"
 	"github.com/sarulabs/di/v2"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 	"projectname/internal/project/domain/configuration"
 	domain "projectname/internal/project/domain/open_weather"
 	"projectname/internal/project/domain/weather"
+	"projectname/internal/project/infrastructure/alerts"
 	"projectname/internal/project/infrastructure/config"
 	"projectname/internal/project/infrastructure/data"
 	"projectname/internal/project/infrastructure/logger"
@@ -65,6 +67,7 @@ func Write(ctn di.Container) {
 		api *openWeather.OpenWeatherApi
 		ctx data.Context
 		log *zap.Logger
+		al  *alerts.Alerts
 	)
 
 	if err := ctn.Fill(logger.BaseServiceName, &log); err != nil {
@@ -77,6 +80,11 @@ func Write(ctn di.Container) {
 	}
 
 	if err := ctn.Fill(data.ServiceName, &ctx); err != nil {
+		log.Warn(err.Error(), zap.Error(err))
+		return
+	}
+
+	if err := ctn.Fill(alerts.ServiceName, &al); err != nil {
 		log.Warn(err.Error(), zap.Error(err))
 		return
 	}
@@ -97,6 +105,8 @@ func Write(ctn di.Container) {
 			if err != nil {
 				log.Warn(`Get `+city.Name+`Temp Failed`, zap.Error(err))
 			}
+
+			al.Alert(`City: ` + city.Name + ` | Current temp:` + fmt.Sprintf("%.6f", *temp))
 
 			if err := ctx.Weather().Write(weather.Temperature{
 				CityName: city.Name,
