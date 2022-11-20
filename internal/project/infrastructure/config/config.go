@@ -55,7 +55,6 @@ func ReadEnv(cfg *viper.Viper) error {
 		_ = os.Setenv(strings.ToUpper(configuration.FullEnvPrefix+configuration.DatabaseConn), db)
 	}
 
-	cfg.SetEnvPrefix(configuration.EnvPrefix)
 	cfg.AutomaticEnv()
 
 	return nil
