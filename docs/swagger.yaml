@@ -1,0 +1,83 @@
+basePath: /api/v1
+host: localhost:80
+info:
+  contact: {}
+paths:
+  /weather/city/:
+    get:
+      consumes:
+      - application/json
+      description: Передаваемые параметры отсутствуют
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "500":
+          description: Internal Server Error
+      summary: Получить список городов в подписке и общее кол-во
+      tags:
+      - city
+  /weather/city/{name}:
+    delete:
+      consumes:
+      - application/json
+      description: Передается название города в качестве url параметра
+      parameters:
+      - description: Название города
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "500":
+          description: Internal Server Error
+      summary: Удаляет город из подписок
+      tags:
+      - city
+    get:
+      consumes:
+      - application/json
+      description: Получить среднюю температуру в городе за последнее кол-во дней.
+        (Кол-во дней указывается в переменной окружения)
+      parameters:
+      - description: Название города
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "500":
+          description: Internal Server Error
+      summary: Получить среднюю температуру в городе
+      tags:
+      - city
+    post:
+      consumes:
+      - application/json
+      description: Передается название города в качестве url параметра
+      parameters:
+      - description: Название города
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "500":
+          description: Internal Server Error
+      summary: Добавляет город в подписки
+      tags:
+      - city
+swagger: "2.0"
